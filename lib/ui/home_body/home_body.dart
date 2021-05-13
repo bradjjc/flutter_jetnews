@@ -16,8 +16,10 @@ class HomeBody extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
+      physics: const  NeverScrollableScrollPhysics(),
       children: [
         ListTile(
+
           title: Text(
             'Top stories for you',
             style: TextStyle(fontSize: 20),

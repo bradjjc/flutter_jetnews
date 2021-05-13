@@ -6,66 +6,137 @@ class TopicsInfo extends StatefulWidget {
 }
 
 class _TopicsInfoState extends State<TopicsInfo> {
-  bool _isChecked = true;
-  final Set<int> checkedIndexes = {};
-  final _textController = TextEditingController();
+  var tmpArray = [];
 
-  @override
-  void dispose() {
-    _textController.dispose();
-    super.dispose();
+  Map<String, bool> android = {
+    "Jetpack Compose": false,
+    "Kotlin": false,
+    "Jetpack": false,
+  };
+
+  Map<String, bool> programming = {
+    "Kotlin": false,
+    "Declarative UIs": false,
+    "Java": false,
+    "Dart": false,
+    "HTML": false,
+  };
+  Map<String, bool> Technology = {
+    "Kotlin2": false,
+    "Declarative UIs2": false,
+    "Java2": false,
+    "Dart2": false,
+    "HTML2": false,
+  };
+
+  getCheckboxItems() {
+    android.forEach((key, value) {
+      if (value == true) {
+        tmpArray.add(key);
+      }
+    });
+    tmpArray.clear();
   }
-
-  List<String> _android = [
-    "Jetpack Compose",
-    "Kotlin",
-    "Jetpack",
-  ];
-
-  List<String> _programming = [
-    "Kotlin",
-    "Declarative UIs",
-    "Java",
-    "Dart",
-    "HTML",
-  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return SingleChildScrollView(
+      child: Column(
         children: [
-          Text('Android'),
-          SizedBox(
-            height: 200.0,
-              child: ListView(
-                padding: EdgeInsets.all(12.0),
-                children: _android.map((text) => CheckboxListTile(
-                  title: Text(text),
-                  value: _isChecked,
-                  onChanged: (val) {
-                    setState(() {
-                      _isChecked = val;
-                    });
-                  },
-                )).toList(),
-              ),
+          Container(
+            child: SizedBox(
+              height: 200,
+              child: Column(children: <Widget>[
+                Text(
+                    "Android",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                Expanded(
+                  flex: 1,
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: const  NeverScrollableScrollPhysics(),
+                    children: android.keys.map((String key) {
+                      return new CheckboxListTile(
+                        title: new Text(key),
+                        value: android[key],
+                        activeColor: Colors.pink,
+                        checkColor: Colors.white,
+                        onChanged: (bool value) {
+                          setState(() {
+                            android[key] = value;
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ]),
+            ),
           ),
-          Text('Programming'),
-          SizedBox(
-            height: 500.0,
-            child: ListView(
-              padding: EdgeInsets.all(12.0),
-              children: _programming.map((text) => CheckboxListTile(
-                title: Text(text),
-                value: _isChecked,
-                onChanged: (val) {
-                  setState(() {
-                    _isChecked = val;
-
-                  });
-                },
-              )).toList(),
+          Container(
+            child: SizedBox(
+              height: 350,
+              child: Column(children: <Widget>[
+                Text(
+                  "programming",
+                  style: TextStyle(fontSize: 18),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: const  NeverScrollableScrollPhysics(),
+                    children: programming.keys.map((String key) {
+                      return new CheckboxListTile(
+                        title: new Text(key),
+                        value: programming[key],
+                        activeColor: Colors.pink,
+                        checkColor: Colors.white,
+                        onChanged: (bool value) {
+                          setState(() {
+                            programming[key] = value;
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ]),
+            ),
+          ),
+          Container(
+            child: SizedBox(
+              height: 300,
+              child: Column(children: <Widget>[
+                Text(
+                  "Technology",
+                  style: TextStyle(fontSize: 18),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: const  NeverScrollableScrollPhysics(),
+                    children: Technology.keys.map((String key) {
+                      return new CheckboxListTile(
+                        title: new Text(key),
+                        value: Technology[key],
+                        activeColor: Colors.pink,
+                        checkColor: Colors.white,
+                        onChanged: (bool value) {
+                          setState(() {
+                            Technology[key] = value;
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ]),
             ),
           ),
         ],

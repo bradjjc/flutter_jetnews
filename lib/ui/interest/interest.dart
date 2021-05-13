@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jetnews/ui/appbar_side/app_bar_side.dart';
 import 'package:flutter_jetnews/ui/interest/tab_bar/people_info.dart';
 import 'package:flutter_jetnews/ui/interest/tab_bar/publications_info.dart';
 import 'package:flutter_jetnews/ui/interest/tab_bar/topics_info.dart';
@@ -27,6 +28,8 @@ class Interest extends StatelessWidget {
               ],
             ),
           ),
+              drawer: Drawer(
+            child: AppBarSide(),),
           body: TabBarView(
             children: [
               TopicsInfo(),

@@ -18,23 +18,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<NewsRepositore>().fetchData().then((NewsInfo) {
-      setState(() {
-        for (int i = 0; i < NewsInfo.result.length; i++) {
-          context.read<NewsRepositore>().news.add(NewsInfo.result[i]);
-        }
-        print(context.read<NewsRepositore>().news[0]);
-      });
-    });
-  }
-
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return context.read<NewsRepositore>().isLoading
+        ? Scaffold(body: Center(child: CircularProgressIndicator()))
+        : Scaffold(
       appBar: AppBar(
         title: Text('Jetnews'),
       ),

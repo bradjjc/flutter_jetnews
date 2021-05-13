@@ -3,8 +3,11 @@ import 'package:flutter_jetnews/main.dart';
 import 'package:flutter_jetnews/ui/home.dart';
 import 'package:flutter_jetnews/ui/interest/interest.dart';
 
+
+
 class AppBarSide extends StatelessWidget {
-  const AppBarSide({Key key}) : super(key: key);
+  List<String> texts = ['Home', 'Interest'];
+  List<bool> isHighlighted = [true, false];
 
   @override
   Widget build(BuildContext context) {

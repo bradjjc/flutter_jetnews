@@ -8,15 +8,21 @@ class HomeBodyUnderSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Image.network(
-          "${news.publication.logoUrl}"),
-      title: Text('${news.title}'),
-      subtitle: Text('${news.metadata.date} - ${news.metadata.readTimeMinutes} min read'),
-      trailing: IconButton(
-        icon: Icon(Icons.more_vert),
-        onPressed: () {},
+    return SizedBox(
+      height: 100,
+      child: ListTile(
+        leading: Image.network(
+            "${news.publication.logoUrl}"),
+        title: Text('BASED ON YOUR HISTORY \n${news.title}',
+        style: TextStyle(fontSize: 15),
+        ),
+        subtitle: Text('${news.metadata.date} - ${news.metadata.readTimeMinutes} min read'),
+        trailing: IconButton(
+          icon: Icon(Icons.more_vert),
+          onPressed: () {},
+        ),
       ),
     );
   }
 }
+//
