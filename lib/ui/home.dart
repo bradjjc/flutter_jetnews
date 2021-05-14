@@ -25,6 +25,7 @@ class _HomeState extends State<Home> {
         ? Scaffold(body: Center(child: CircularProgressIndicator()))
         : Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: Text('Jetnews'),
       ),
       drawer: Drawer(
@@ -36,11 +37,18 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HomeBody(context.read<NewsRepositore>().news[2]),
-              HomeBodyTopSub(context.read<NewsRepositore>().news[3]),
-              HomeBodyTopSub(context.read<NewsRepositore>().news[4]),
+              SizedBox(
+                height: 100,
+                  child: HomeBodyTopSub(context.read<NewsRepositore>().news[3])),
+              Divider(color: Colors.black),
+              SizedBox(
+                  height: 100,
+                  child: HomeBodyTopSub(context.read<NewsRepositore>().news[4])),
               HomeBodySlider(context.read<NewsRepositore>().news),
               HomeBodyUnderSlider(context.read<NewsRepositore>().news[5]),
+              Divider(color: Colors.black),
               HomeBodyUnderSlider(context.read<NewsRepositore>().news[6]),
+              Divider(color: Colors.black),
               HomeBodyUnderSlider(context.read<NewsRepositore>().news[7]),
             ],
           ),

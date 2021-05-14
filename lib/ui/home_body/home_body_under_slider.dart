@@ -13,10 +13,12 @@ class HomeBodyUnderSlider extends StatelessWidget {
       child: ListTile(
         leading: Image.network(
             "${news.publication.logoUrl}"),
-        title: Text('BASED ON YOUR HISTORY \n${news.title}',
-        style: TextStyle(fontSize: 15),
+        title: Text('BASED ON YOUR HISTORY',
+          style: TextStyle(fontSize: 12),
         ),
-        subtitle: Text('${news.metadata.date} - ${news.metadata.readTimeMinutes} min read'),
+        subtitle: Text('${news.title} \n${news.metadata.date} - ${news.metadata.readTimeMinutes} min read',
+          style: TextStyle(fontSize: 16),
+        ),
         trailing: IconButton(
           icon: Icon(Icons.more_vert),
           onPressed: () {},
